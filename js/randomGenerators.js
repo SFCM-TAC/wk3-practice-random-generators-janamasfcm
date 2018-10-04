@@ -2,56 +2,25 @@
 // TODO: Use constructor notation to create an object
 // with properties and methods that can be shared by both
 // diceRollGenerator and eightBallGenerator.
-function Generator(array) {
-  this.array = array || []
-  this.generate = function (){
-    var randomNumber = Math.random();
-    var randomAnswer = Math.floor(randomNumber * this.array.length);
-    var answer = this.array [randomAnswer];
-    return answer;
-  };
-
-this.addResult = function(value) {
-  this.array.push(value)
-};
-
-this.removeResult = function(value) {
-  for(var i = 0; i < this.array.length-1; i++){
-    if (array[i] === value) {
-      this.array.splice(i,1);
-    }
+function Generator(side1, side2, side3, side4, side5, side6) {
+  this.first= side1;
+  this.second= side2;
+  this.third=side3;
+  this.fourth= side4;
+  this.fifth= side5
+  this.sixth= side6;
   }
-}
 
 // TODO: Initialise diceRollGenerator and eightBallGenerator
 // using the constructor notation and the Generator object
 // you just created
-const diceRollGenerator{
-  diceRollGenerator.first = 1
-  diceRollGenerator.second = 2
-  diceRollGenerator.third = 3
-  diceRollGenerator.fourth = 4
-  diceRollGenerator.fifth = 5
-  diceRollGenerator.sixth = 6
-}
-const eightBallGenerator = {
-  eightBallGenerator.first = 1
-  eightBallGenerator.second = 2
-  eightBallGenerator.third = 3
-  eightBallGenerator.fourth = 4
-  eightBallGenerator.fixth = 5
-  eightBallGenerator.sixth = 6
-}
+const diceRollGenerator = new Generator (1,2,3,4,5,6,7,8,9,)
 
+const eightBallGenerator = new Generator ('sure', 'okay', 'maybe so', 'if you think so', 'im not sure', 'lets see')
 
-function handleDiceRoll() {
-  const resultElement = document.getElementById('diceResult');
-  var diceResult = math.random()*6;
-
-  // TODO: call a method on diceRollGenerator to populate result with a random value
-  var RoundedNumber = math.cell(diceResult)
-;  const result = "result";
-  resultElement.innerHTML = result;
+var outcome = function (obj) {
+  var keys = Object.keys (obj)
+  return obj[keys[ keys.length * math.random() <<0]];
 }
 
 function handleEightBallShake() {
