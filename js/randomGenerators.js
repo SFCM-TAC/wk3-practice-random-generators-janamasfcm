@@ -2,32 +2,46 @@
 // TODO: Use constructor notation to create an object
 // with properties and methods that can be shared by both
 // diceRollGenerator and eightBallGenerator.
-function Generator(side1, side2, side3, side4, side5, side6) {
-  this.first= side1;
-  this.second= side2;
-  this.third=side3;
-  this.fourth= side4;
-  this.fifth= side5
-  this.sixth= side6;
+function Generator(array) {
+  this.array = array || []
+  this.generate = function(){
+    var randomNumber = Math.random();
+    var randomAnswer = Math.floor(randomNumber * this.array.length);
+    var answer = this.array[randomAnswer];
+    return answer;
+  };
+
+  this.addResult = function(value) {
+    this.array.push(value);
+  };
+
+  this.removeResult = function(value) {
+    for( var i = 0; i < this.array.length-1; i++){
+      if ( array[i] === value) {
+        this.array.splice(i, 1);
+      }
+    }
   }
+}
+
 
 // TODO: Initialise diceRollGenerator and eightBallGenerator
 // using the constructor notation and the Generator object
 // you just created
-const diceRollGenerator = new Generator (1,2,3,4,5,6,7,8,9,)
+const diceRollGenerator = new Generator([1, 2, 3, 4, 5, 6]);
+const eightBallGenerator = new Generator(["I don't know.", "naw.", "if you think so.", "maybe so."]);
 
-const eightBallGenerator = new Generator ('sure', 'okay', 'maybe so', 'if you think so', 'im not sure', 'lets see')
-
-var outcome = function (obj) {
-  var keys = Object.keys (obj)
-  return obj[keys[ keys.length * math.random() <<0]];
+function handleDiceRoll() {
+  const resultElement = document.getElementById('diceResult');
+  const result = diceRollGenerator.generate()
+  // TODO: call a method on diceRollGenerator to populate result with a random value
+  resultElement.innerHTML = result;
 }
-
 function handleEightBallShake() {
   const resultElement = document.getElementById('eightBallResult');
 
   // TODO: call a method on eightBallGenerator to populate result with a random value
-  const result = "result";
+  const result = eightBallGenerator.generate();
   resultElement.innerHTML = result;
 }
 
