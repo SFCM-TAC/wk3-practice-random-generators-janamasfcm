@@ -25,8 +25,8 @@ function Generator(array) {
     if (index !== -1) {
       options.splice(index, 1);
     }
-  }
-}
+  };
+  };
 
 
 // TODO: Initialise diceRollGenerator and eightBallGenerator
@@ -36,17 +36,15 @@ const diceRollGenerator = new Generator([1, 2, 3, 4, 5, 6]);
 const eightBallGenerator = new Generator(["I don't know.", "naw.", "if you think so.", "maybe so."]);
 
 function handleDiceRoll() {
+  const diceResult = diceRollGenerator.generate();
   const resultElement = document.getElementById('diceResult');
-  const result = diceRollGenerator.generate()
-  // TODO: call a method on diceRollGenerator to populate result with a random value
-  resultElement.innerHTML = result;
+  resultElement.innerHTML = diceResult;
 }
-function handleEightBallShake() {
-  const resultElement = document.getElementById('eightBallResult');
 
-  // TODO: call a method on eightBallGenerator to populate result with a random value
-  const result = eightBallGenerator.generate();
-  resultElement.innerHTML = result;
+function handleEightBallShake() {
+  const ballResult = eightBallGenerator.generate();
+  const resultElement = document.getElementById('eightBallResult');
+  resultElement.innerHTML = ballResult;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
