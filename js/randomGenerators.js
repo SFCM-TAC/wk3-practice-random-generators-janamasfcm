@@ -11,15 +11,19 @@ function Generator(array) {
     return answer;
   };
 
-  this.addResult = function(value) {
-    this.array.push(value);
-  };
+  this.adding = function(option) {
+    var index = options.indexOf(option);
 
-  this.removeResult = function(value) {
-    for( var i = 0; i < this.array.length-1; i++){
-      if ( array[i] === value) {
-        this.array.splice(i, 1);
-      }
+    if (index === -1) {
+      options.push(option);
+      max++
+    }
+  };
+  this.removing= function(option) {
+    var index = options.indexOf(option);
+
+    if (index !== -1) {
+      options.splice(index, 1);
     }
   }
 }
