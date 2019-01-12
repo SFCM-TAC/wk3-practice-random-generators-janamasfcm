@@ -10,19 +10,22 @@ function Generator(array) {
     var answer = this.array[randomAnswer];
     return answer;
   };
+  this.addOption = function(option) {
+    var index = options.indexOf(option);
 
-  this.addResult = function(value) {
-    this.array.push(value);
-  };
-
-  this.removeResult = function(value) {
-    for( var i = 0; i < this.array.length-1; i++){
-      if ( array[i] === value) {
-        this.array.splice(i, 1);
-      }
+    if (index === -1) {
+      options.push(option);
+      max++
     }
-  }
-}
+  };
+  this.removeOption = function(option) {
+    var index = options.indexOf(option);
+
+    if (index !== -1) {
+      options.splice(index, 1);
+    }
+  };
+  };
 
 
 // TODO: Initialise diceRollGenerator and eightBallGenerator
@@ -32,19 +35,15 @@ const diceRollGenerator = new Generator([1, 2, 3, 4, 5, 6]);
 const eightBallGenerator = new Generator(["I don't know.", "naw.", "if you think so.", "maybe so."]);
 
 function handleDiceRoll() {
+  const diceResult = diceRollGenerator.generate();
   const resultElement = document.getElementById('diceResult');
-  const result = diceRollGenerator.generate()
-  // TODO: call a method on diceRollGenerator to populate result with a random value
-  const result = diceRollGenerator.generate();
-  resultElement.innerHTML = result;
-
+  resultElement.innerHTML = diceResult;
 }
-function handleEightBallShake() {
-  const resultElement = document.getElementById('eightBallResult');
 
-  // TODO: call a method on eightBallGenerator to populate result with a random value
-  const result = eightBallGenerator.generate();
-  resultElement.innerHTML = result;
+function handleEightBallShake() {
+  const ballResult = eightBallGenerator.generate();
+  const resultElement = document.getElementById('eightBallResult');
+  resultElement.innerHTML = ballResult;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
