@@ -35,7 +35,9 @@ function handleDiceRoll() {
   const resultElement = document.getElementById('diceResult');
   const result = diceRollGenerator.generate()
   // TODO: call a method on diceRollGenerator to populate result with a random value
+  const result = diceRollGenerator.generate();
   resultElement.innerHTML = result;
+
 }
 function handleEightBallShake() {
   const resultElement = document.getElementById('eightBallResult');
